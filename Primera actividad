@@ -1,0 +1,24 @@
+def calcular_precio(tiempo, dia):
+    if tiempo <= 0 or tiempo > 24:
+        return "Tiempo ingresado incorrecto"
+
+    if dia == "Lunes" or dia == "Martes" or dia == "Miércoles":
+        tarifa = 2.00
+    elif dia == "Jueves" or dia == "Viernes":
+        tarifa = 2.50
+    elif dia == "Sábado" or dia == "Domingo":
+        tarifa = 3.00
+    else:
+        return "Día ingresado incorrecto"
+
+    fraccion = tiempo - int(tiempo)
+    if fraccion > 0:
+        fraccion += 1
+    total = int(tiempo) * tarifa + fraccion * tarifa
+
+    return f"El total a pagar es: ${total:.2f}"
+
+if __name__ == "__main__":
+    dia = input("Ingrese el día de la semana: ")
+    tiempo = float(input("Ingrese el tiempo de estacionamiento en horas: "))
+    print(calcular_precio(tiempo, dia))
